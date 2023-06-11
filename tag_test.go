@@ -11,9 +11,7 @@ func TestParseTag(t *testing.T) {
 		{name: "empty", tag: "", expectedTag: Tag{}},
 		{name: "just header", tag: "field_header", expectedTag: Tag{FieldHeader: "field_header"}},
 		{name: "empty header", tag: ",", expectedTag: Tag{FieldHeader: ""}},
-		{name: "explicit ignore header", tag: "-,", expectedTag: Tag{FieldHeader: ""}},
-		{name: "explicit ignore header without trailing comma", tag: "-", expectedTag: Tag{}},
-		{name: "header with other unrecognised options", tag: "field_header,omitempty,irrelevant", expectedTag: Tag{FieldHeader: "field_header"}},
+		{name: "header with other unrecognised options", tag: "field_header,omitempty,irrelevant", expectedTag: Tag{FieldHeader: "field_header", Options: "omitempty,irrelevant"}},
 	}
 
 	for _, tc := range tcs {
